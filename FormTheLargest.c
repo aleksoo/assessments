@@ -1,4 +1,6 @@
 #include <assert.h>
+#include <stdio.h>
+#include <math.h>
 
 /**
 * Given a number, return the maximum number that could be formed with digits of the number given.
@@ -6,7 +8,25 @@
 */
 int form_the_largest_number(int number)
 {
-	return 0;
+	int originalNumber = number, digitsNo = 0, biggestNumber = 0, power=0, singleDigit;
+
+	while(number/=10){
+		++digitsNo;
+	}	
+
+	number = originalNumber;
+	
+	for(singleDigit=9; singleDigit>=0; --singleDigit){
+		number = originalNumber;
+		for(number; number>0; number/=10){
+			if(number%10 == singleDigit){
+				biggestNumber += singleDigit*pow(10, digitsNo);
+				--digitsNo;	
+			}
+		}
+	}
+
+	return biggestNumber;
 }
 
 void test_cases()
