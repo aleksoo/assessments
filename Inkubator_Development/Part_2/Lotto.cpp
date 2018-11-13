@@ -13,12 +13,12 @@ std::array<int, 5> Lotto_drawing()
 /* Please create test cases for this program. test_cases() function can return void, bool or int. */
 bool test_cases()
 {
-
+    
 }
 
 
 int main()
 {
-
+    test_cases();
 }
 

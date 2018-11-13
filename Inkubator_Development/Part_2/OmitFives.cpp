@@ -6,6 +6,7 @@
 */
 int numbers_without_five(int start, int end)
 {
+	int count = 0;
 	return 0;
 }
 
