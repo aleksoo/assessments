@@ -6,7 +6,13 @@
 */
 int numbers_without_five(int start, int end)
 {
-	return 0;
+	int counter = 0; 
+	for(int i = start; i<=end; ++i){
+		if( (i%5) || !(i%10)) {
+			counter++;
+		}
+	}
+	return counter;
 }
 
 void test_cases()
