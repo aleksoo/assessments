@@ -19,6 +19,6 @@ bool test_cases()
 
 int main()
 {
-
+    test_cases();
 }
 
