@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <iostream>
 
 /**
 * Function takes a 'start' and 'end' number of a range, and should return the count of all numbers except numbers with 5 in it.
@@ -6,8 +7,13 @@
 */
 int numbers_without_five(int start, int end)
 {
-	int count = 0;
-	return 0;
+	int counter = 0;
+	for(int i = start; i<=end; ++i){
+		if( (i%5) || !(i%10)) {
+			counter++;
+		}
+	}
+	return counter;
 }
 
 void test_cases()
