@@ -8,10 +8,10 @@
 */
 bool XO(const char *word, const int length)
 {
-	int i = 0, xCount = 0, oCount = 0;
+	int xCount = 0, oCount = 0;
 
 	// Iterujemy po otrzymanym slowie
-	for(i=0; i<length; ++i){
+	for(int i=0; i<length; ++i){
 		// Jezeli X lub O wystepuje, to zwiekszamy liczniki
 		if(word[i]=='x' || word[i]=='X') xCount++;
 		if(word[i]=='o' || word[i]=='O') oCount++;
