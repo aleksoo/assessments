@@ -37,7 +37,6 @@ void test_cases(){
 	answer = braces("{");
 	assert(answer == false);
 
-	std::cout << "A\n";
 	answer = braces(")(");
 	assert(answer == false);
 
@@ -68,6 +67,7 @@ bool braces(const std::string& bracesString){
 			}
 		}		
 	}
+	// test
 
 	return true;
 }
