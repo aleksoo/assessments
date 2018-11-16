@@ -51,6 +51,7 @@ void test_cases(){
     answerString = highest_scoring_word("");
     assert(!strcmp(answerString, ""));
 
+    free(answerString);
 
 }
 
@@ -80,7 +81,8 @@ char* highest_scoring_word(const char* string){
         token = strtok(NULL," ,.");
     }
 
-        return highestWord;
+    free(tempString);
+    return highestWord;
 }
 
 int word_eval(const char* string){
@@ -93,6 +95,8 @@ int word_eval(const char* string){
     for(int i=0; i < strlen(string); ++i){
         score+=(int)lowerString[i]-96;
     }
+
+    free(lowerString);
 
     return score;
 }
