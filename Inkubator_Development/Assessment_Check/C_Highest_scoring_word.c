@@ -39,23 +39,23 @@ void test_cases(){
     answerInt = word_eval("cAb");
     assert(answerInt == 6);
 
-    // answerInt = word_eval("");
-    // assert(answerInt == 0);
+    answerInt = word_eval("");
+    assert(answerInt == 0);
 
     answerString = highest_scoring_word("zzz bacbac");
     assert(!strcmp(answerString, "zzz"));
     free(answerString);
     
-    // answerString = highest_scoring_word("zZ ZZZ zac");
-    // assert(!strcmp(answerString, "ZZZ"));
-    // free(answerString);
+    answerString = highest_scoring_word("zZ ZZZ zac");
+    assert(!strcmp(answerString, "ZZZ"));
+    free(answerString);
     
-    // answerString = highest_scoring_word("aaa c");
-    // assert(!strcmp(answerString, "aaa"));
-    // free(answerString);
+    answerString = highest_scoring_word("aaa c");
+    assert(!strcmp(answerString, "aaa"));
+    free(answerString);
     
-    // answerString = highest_scoring_word("");
-    // assert(!strcmp(answerString, ""));
+    answerString = highest_scoring_word("");
+    assert(!strcmp(answerString, ""));
 
     
 
@@ -76,11 +76,9 @@ char* highest_scoring_word(const char* string){
     token = strtok(tempString," ,."); 
     highestWord = (char*)malloc(strlen(token) * sizeof(char));
     strcpy(highestWord, token);
-    printf("A\n");
     while(token != NULL){
         tempScore = word_eval(token);
         if(tempScore > highestScore){
-            free(highestWord);
             highestWord = realloc(highestWord, sizeof(token));
             strcpy(highestWord, token);
             highestScore = tempScore;
