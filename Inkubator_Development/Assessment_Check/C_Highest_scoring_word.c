@@ -8,7 +8,6 @@
 void test_cases();
 char* highest_scoring_word(const char* string);
 int word_eval(const char* string);
-char* stringToLow(const char* string);
 
 
 int main(){
@@ -18,26 +17,17 @@ int main(){
 
 void test_cases(){
 
-    char* answerString = stringToLow("AAaaAA");
-    assert(!strcmp(answerString, "aaaaaa"));
-    free(answerString);
+    char* answerString;
+    int answerInt;
     
-    answerString = stringToLow("Z");
-    assert(!strcmp(answerString, "z"));
-    free(answerString);
-    
-    answerString = stringToLow("");
-    assert(!strcmp(answerString, ""));
-    free(answerString);
-    
-    int answerInt = word_eval("aaa");
+    answerInt = word_eval("aaa");
     assert(answerInt == 3);
 
-    answerInt = word_eval("bA");
+    answerInt = word_eval("ba");
     assert(answerInt == 3);
 
-    answerInt = word_eval("cAb");
-    assert(answerInt == 6);
+    answerInt = word_eval("caba");
+    assert(answerInt == 7);
 
     answerInt = word_eval("");
     assert(answerInt == 0);
@@ -46,36 +36,29 @@ void test_cases(){
     assert(!strcmp(answerString, "zzz"));
     free(answerString);
     
-    answerString = highest_scoring_word("zZ ZZZ zac");
-    assert(!strcmp(answerString, "ZZZ"));
+    answerString = highest_scoring_word("zz zzz zac");
+    assert(!strcmp(answerString, "zzz"));
     free(answerString);
     
     answerString = highest_scoring_word("aaa c");
     assert(!strcmp(answerString, "aaa"));
     free(answerString);
-    
-    answerString = highest_scoring_word("");
-    assert(!strcmp(answerString, ""));
-
-    
-
 }
 
 char* highest_scoring_word(const char* string){
     if( !strlen(string) )
         return "";
+        
     int highestScore = 0, tempScore = 0;
     char* token;
     char* highestWord;
     char* tempString = (char*)malloc(strlen(string) * sizeof(char));
     strcpy(tempString, string);
 
-    
-    stringToLow(tempString);
-
     token = strtok(tempString," ,."); 
     highestWord = (char*)malloc(strlen(token) * sizeof(char));
     strcpy(highestWord, token);
+
     while(token != NULL){
         tempScore = word_eval(token);
         if(tempScore > highestScore){
@@ -85,7 +68,7 @@ char* highest_scoring_word(const char* string){
         }
         token = strtok(NULL," ,.");
     }
-
+    free(token);
     free(tempString);
     return highestWord;
 }
@@ -93,22 +76,9 @@ char* highest_scoring_word(const char* string){
 int word_eval(const char* string){
     int score=0;
 
-    char* lowerString = (char*)malloc(strlen(string)*sizeof(char));
-    lowerString = stringToLow(string);
-
     for(int i = 0; i < strlen(string); ++i){
-        score += (int)lowerString[i] - 96;
+        score += (int)string[i] - 96;
     }
-
-    free(lowerString);
-
     return score;
 }
 
-char* stringToLow(const char* string){
-    char* lowerString = (char*)malloc(strlen(string) * sizeof(char));
-    for(int i = 0; i < strlen(string); ++i){
-        lowerString[i] = tolower(string[i]);
-    }
-    return lowerString;
-}
