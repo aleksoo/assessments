@@ -16,35 +16,35 @@ int main(int argc, char *argv[])
 void test_cases(){
 	bool answer;
 
-	answer = is_pair('{', '}');
-	assert(answer == true);
+	// answer = is_pair('{', '}');
+	// assert(answer == true);
 
-	answer = is_pair('[', ']');
-	assert(answer == true);	
+	// answer = is_pair('[', ']');
+	// assert(answer == true);	
 
-	answer = is_pair('(', ')');
-	assert(answer == true);	
+	// answer = is_pair('(', ')');
+	// assert(answer == true);	
 
-	answer = braces("{}");
-	assert(answer == true);
+	// answer = braces("{}");
+	// assert(answer == true);
 
-	answer = braces("{()}");
-	assert(answer == true);
+	// answer = braces("{()}");
+	// assert(answer == true);
 
-	answer = braces("{)}");
-	assert(answer == false);
+	// answer = braces("{)}");
+	// assert(answer == false);
 
-	answer = braces("{");
-	assert(answer == false);
+	// answer = braces("{");
+	// assert(answer == false);
 
 	answer = braces(")(");
 	assert(answer == false);
 
-	answer = braces("([)]");
-	assert(answer == false);
+	// answer = braces("([)]");
+	// assert(answer == false);
 
-	answer = braces("([)]]");
-	assert(answer == false);	
+	// answer = braces("([)]]");
+	// assert(answer == false);	
 }
 
 bool braces(const std::string& bracesString){
@@ -53,13 +53,16 @@ bool braces(const std::string& bracesString){
 
 	std::stack<char> bracesStack;
 	char temp;
-	for(char bracket : bracesString){		
+	for(char bracket : bracesString){	
+		std::cout << bracket << std::endl;	
 		if(	bracket == '(' || bracket == '[' || bracket == '{' ){
 			bracesStack.push(bracket);
 		} else {
-			if(bracesStack.empty())
+			if(bracesStack.empty()){
+				std::cout << "Pushed\n";
 				bracesStack.push(bracket);
-			else {
+			} else {
+				std::cout << "Drugi else\n";
 				temp = bracesStack.top();
 				bracesStack.pop();
 				if(!is_pair(temp, bracket)) 
@@ -67,7 +70,6 @@ bool braces(const std::string& bracesString){
 			}
 		}		
 	}
-	// test
 
 	return true;
 }
