@@ -5,15 +5,6 @@
 #include <vector>
 #include <sstream>
 
-void test_cases();
-int count_tulips(std::stringstream& inputStream);
-
-int main(int argc, char *argv[])
-{
-	test_cases();
-	return 0;
-}
-
 void test_cases(){
 	int answer = 0;
 	std::stringstream inputStream;
@@ -87,3 +78,10 @@ int count_tulips(std::stringstream& inputStream){
 
 	return missingTulips;
 }
+
+int main(int argc, char *argv[])
+{
+	test_cases();
+	return 0;
+}
+
