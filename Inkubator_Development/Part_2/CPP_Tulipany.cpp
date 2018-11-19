@@ -63,7 +63,6 @@ int count_tulips(std::stringstream& inputStream){
 	std::array<bool, 15000> ownedTulips;
 	std::fill(ownedTulips.begin(), ownedTulips.end(), 0);
 	int rows = 0, tulip = 0, missingTulips = 0, numberOfTulips = 0;
-	std::string::size_type sz;
 	std::string inputString;
 	
 	getline(inputStream, inputString);
@@ -75,7 +74,7 @@ int count_tulips(std::stringstream& inputStream){
 	for(int i = 0; i < rows; ++i){
 			getline(inputStream, inputString, ' ');
 			if( !inputString.empty() ){
-				tulip = stoi(inputString, &sz);
+				tulip = stoi(inputString);
 				if( tulip > 0 && tulip <= 15000 )
 					ownedTulips[tulip] = true;
 			}
