@@ -57,13 +57,13 @@ char* highest_scoring_word(const char* string){
 
     token = strtok(tempString," ,."); 
     highestWord = (char*)malloc(strlen(token) * sizeof(char));
-    strcpy(highestWord, token);
+    strncpy(highestWord, token, strlen(token) * sizeof(char));
 
     while(token != NULL){
         tempScore = word_eval(token);
         if(tempScore > highestScore){
             highestWord = realloc(highestWord, sizeof(token));
-            strcpy(highestWord, token);
+            strncpy(highestWord, token, strlen(token) * sizeof(char));
             highestScore = tempScore;
         }
         token = strtok(NULL," ,.");
@@ -77,6 +77,7 @@ int word_eval(const char* string){
     int score=0;
 
     for(int i = 0; i < strlen(string); ++i){
+        // In ASCII table "a" has index 97, so to get values a=1, b=2, ..., I need to subtract 96.
         score += (int)string[i] - 96;
     }
     return score;
