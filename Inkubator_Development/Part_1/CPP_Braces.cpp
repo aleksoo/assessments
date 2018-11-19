@@ -48,21 +48,19 @@ void test_cases(){
 }
 
 bool braces(const std::string& bracesString){
-	if(bracesString.size() == 1)
+	if(	bracesString.size() == 1 || bracesString[0] == ')' || bracesString[0] == ']' || bracesString[0] == '}')
 		return false;
 
 	std::stack<char> bracesStack;
 	char temp;
+
 	for(char bracket : bracesString){	
-		std::cout << bracket << std::endl;	
 		if(	bracket == '(' || bracket == '[' || bracket == '{' ){
 			bracesStack.push(bracket);
 		} else {
-			if(bracesStack.empty()){
-				std::cout << "Pushed\n";
+			if(bracesStack.empty())
 				bracesStack.push(bracket);
-			} else {
-				std::cout << "Drugi else\n";
+			else {
 				temp = bracesStack.top();
 				bracesStack.pop();
 				if(!is_pair(temp, bracket)) 
