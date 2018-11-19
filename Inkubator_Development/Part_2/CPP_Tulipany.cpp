@@ -24,6 +24,18 @@ void test_cases(){
 	inputStream.str("");
 	inputStream.clear();
 
+	inputStream << "2\n1 ";
+	answer = count_tulips(inputStream);
+	assert(answer == 14999);
+	inputStream.str("");
+	inputStream.clear();
+
+	inputStream << "1\n1 2";
+	answer = count_tulips(inputStream);
+	assert(answer == 14999);
+	inputStream.str("");
+	inputStream.clear();
+
 	inputStream << "2\n1 15000";
 	answer = count_tulips(inputStream);
 	assert(answer == 14998);
@@ -62,9 +74,11 @@ int count_tulips(std::stringstream& inputStream){
 
 	for(int i = 0; i < rows; ++i){
 			getline(inputStream, inputString, ' ');
-			tulip = stoi(inputString, &sz);
-			if( tulip > 0 && tulip <= 15000 )
-				ownedTulips[tulip] = true;
+			if( !inputString.empty() ){
+				tulip = stoi(inputString, &sz);
+				if( tulip > 0 && tulip <= 15000 )
+					ownedTulips[tulip] = true;
+			}
 	}
 
 	for(int i = 1; i <= 15000; ++i){
