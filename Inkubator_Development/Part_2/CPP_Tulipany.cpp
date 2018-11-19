@@ -2,6 +2,7 @@
 #include <iostream>
 
 void test_cases();
+int count_tulips();
 
 int main(int argc, char *argv[])
 {
@@ -11,4 +12,8 @@ int main(int argc, char *argv[])
 
 void test_cases(){
     
+}
+
+int count_tulips(){
+	
 }
