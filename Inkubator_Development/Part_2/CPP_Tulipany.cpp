@@ -5,6 +5,35 @@
 #include <vector>
 #include <sstream>
 
+int count_tulips(std::stringstream& inputStream){	
+	std::array<bool, 15000> ownedTulips;
+	std::fill(ownedTulips.begin(), ownedTulips.end(), 0);
+	int rows = 0, tulip = 0, missingTulips = 0, numberOfTulips = 0;
+	std::string inputString;
+	
+	getline(inputStream, inputString);
+	rows = stoi(inputString);
+
+	if(rows == 0)
+		return 15000;
+
+	for(int i = 0; i < rows; ++i){
+			getline(inputStream, inputString, ' ');
+			if( !inputString.empty() ){
+				tulip = stoi(inputString);
+				if( tulip > 0 && tulip <= 15000 )
+					ownedTulips[tulip] = true;
+			}
+	}
+
+	for(int i = 1; i <= 15000; ++i){
+		if( !ownedTulips[i] )
+			++missingTulips;
+	}
+
+	return missingTulips;
+}
+
 void test_cases(){
 	int answer = 0;
 	std::stringstream inputStream;
@@ -48,35 +77,6 @@ void test_cases(){
 	assert(answer == 0);
 	inputStream.str("");
 	inputStream.clear();    
-}
-
-int count_tulips(std::stringstream& inputStream){	
-	std::array<bool, 15000> ownedTulips;
-	std::fill(ownedTulips.begin(), ownedTulips.end(), 0);
-	int rows = 0, tulip = 0, missingTulips = 0, numberOfTulips = 0;
-	std::string inputString;
-	
-	getline(inputStream, inputString);
-	rows = stoi(inputString);
-
-	if(rows == 0)
-		return 15000;
-
-	for(int i = 0; i < rows; ++i){
-			getline(inputStream, inputString, ' ');
-			if( !inputString.empty() ){
-				tulip = stoi(inputString);
-				if( tulip > 0 && tulip <= 15000 )
-					ownedTulips[tulip] = true;
-			}
-	}
-
-	for(int i = 1; i <= 15000; ++i){
-		if( !ownedTulips[i] )
-			++missingTulips;
-	}
-
-	return missingTulips;
 }
 
 int main(int argc, char *argv[])
