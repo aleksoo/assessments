@@ -10,9 +10,9 @@ int* lowest_and_highest(const char *inputString){
 	long price;	
 	long *valueOfTheDay = NULL;
 	long* votd = NULL;
-	static int daysInterval[2] = {-1, -1};
-	daysInterval[0] = -1;
-	daysInterval[1] = -1;
+	int daysInterval[2] = {-1, -1};
+	//daysInterval[0] = -1;
+	//daysInterval[1] = -1;
 	char *token = NULL;
 	char *tempString = (char*)malloc( (strlen(inputString) + 1) * sizeof(char) );
     strcpy(tempString, inputString);
@@ -52,30 +52,22 @@ int* lowest_and_highest(const char *inputString){
 }
 
 void test_cases(){
-	char *inputString = NULL;
 	int *answer = NULL;
 
-	inputString = "0 3\n1 3 5 2 3 4 3";
-	answer = lowest_and_highest(inputString);
+	answer = lowest_and_highest("0 3\n1 3 5 2 3 4 3");
 	assert( answer[0] == -1 && answer[1] == -1 );
 
-	inputString = "7 3\n1 3 5 2 3 4 3";
-	answer = lowest_and_highest(inputString);
+	answer = lowest_and_highest("7 3\n1 3 5 2 3 4 3");
     assert( answer[0] == 2 && answer[1] == 7 );
 
-	inputString = "17 3\n1 3 5 2 3 4 3 4 1 6 8 3 8 3 5 1 7";
-	answer = lowest_and_highest(inputString);
+	answer = lowest_and_highest("17 3\n1 3 5 2 3 4 3 4 1 6 8 3 8 3 5 1 7");
     assert( answer[0] == 2 && answer[1] == 14 );
 
-	inputString = "4 2\n2 3 4 5";
-	answer = lowest_and_highest(inputString);	
+	answer = lowest_and_highest("4 2\n2 3 4 5");	
     assert( answer[0] == 1 && answer[1] == 1 );
 
-	inputString = "3 2\n5 3 1";
-	answer = lowest_and_highest(inputString);
+	answer = lowest_and_highest("3 2\n5 3 1");
     assert( answer[0] == -1 && answer[1] == -1 );
-
-	free(inputString);
 
 }
 

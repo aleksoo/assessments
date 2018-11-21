@@ -10,7 +10,7 @@ bool bigNumbers(const char *inputString){
     char *sign = NULL;
     char *secondNumber = NULL;
     char *tempString = (char*)malloc(strlen(inputString) * sizeof(char));
-    strcpy(tempString, inputString);
+    strcpy(tempString, inputString); // strncpy
 
     firstNumber = strtok(tempString, " ");
     sign = strtok(NULL, " ");
