@@ -82,7 +82,7 @@ bool bigNumbers(const char *inputString){
             }
             break;
 
-        case 3: // < // co do kurwy
+        case 3: // <
             if( strlen(firstNumber) == strlen(secondNumber) ){
                 for(int i = 0; i < strlen(firstNumber); ++i){
                     if( (int)*(firstNumber + i) < (int)*(secondNumber + i) ){
