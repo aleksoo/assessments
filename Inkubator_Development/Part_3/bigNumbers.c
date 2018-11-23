@@ -4,38 +4,40 @@
 #include <string.h>
 #include <stdbool.h>
 
-bool bigNumbers(const char *inputString){
-    int choice=-1;
-    char *firstNumber = NULL;
-    char *sign = NULL;
-    char *secondNumber = NULL;
-    char *token = NULL;
-    char *tempString = (char*)malloc((strlen(inputString))* sizeof(char));
-    strcpy(tempString, inputString); // strncpy
-
-    token = strtok(tempString, " ");
-    firstNumber = (char*)malloc((strlen(token))* sizeof(char));
-    strncpy(firstNumber, token, strlen(token));
-
-    token = strtok(NULL, " ");
-    sign = (char*)malloc((strlen(token) ) * sizeof(char));
-    strncpy(sign, token, strlen(token));
-
-    token = strtok(tempString, " ");
-    secondNumber = (char*)malloc((strlen(token)) * sizeof(char));
-    strncpy(secondNumber, token, strlen(token)); 
-
-    printf("%s %s %s\n", firstNumber, sign, secondNumber);
-
-    const char *signs[6] = {"==", "!=", ">", "<", ">=", "<="};
-    for(int i = 0; i < 6; ++i){
-        if(!strcmp(signs[i], sign)){
-            choice = i;
-            break;
+void freeAll(char* firstNumber, char* sign, char* secondNumber, char* tempString){
     free(firstNumber);
     free(sign);
     free(secondNumber);
-        free(tempString);
+    free(tempString);
+}
+
+bool bigNumbers(const char *inputString){
+    int choice=-1;
+    char *firstNumber = NULL; 
+    char *sign = NULL;
+    char *secondNumber = NULL;
+    char *token = NULL;
+    char *tempString = NULL;
+    tempString = (char*)malloc( (strlen(inputString) + 1) * sizeof(char) );    
+    strncpy(tempString, inputString, strlen(inputString)); 
+
+    token = strtok(tempString, " ");
+    firstNumber = (char*)malloc( (strlen(token) + 1 ) * sizeof(char) );
+    strncpy(firstNumber, token, strlen(token)  );
+
+    token = strtok(NULL, " ");
+    sign = (char*)malloc( (strlen(token) + 1 ) * sizeof(char) );
+    strncpy(sign, token, strlen(token)  );
+
+    token = strtok(NULL, " ");
+    secondNumber = (char*)malloc( (strlen(token) + 1 ) * sizeof(char) );
+    strncpy(secondNumber, token, strlen(token)  ); 
+
+    const char *signs[6] = { "==", "!=", ">", "<", ">=", "<=" };
+    for(int i = 0; i < 6; ++i){
+        if( !strcmp(signs[i], sign) ){
+            choice = i;
+            break;
         }
     }
 
@@ -43,19 +45,13 @@ bool bigNumbers(const char *inputString){
         case 0: // ==
             if( strlen(firstNumber) != strlen(secondNumber) ){
                 printf("NIE\n");
-                free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                freeAll(firstNumber, sign, secondNumber, tempString);
                 return false;
             }
             for(int i = 0; i < strlen(firstNumber); ++i){
                 if( !( (int)*(firstNumber + i) == (int)*(secondNumber + i) ) ){
                     printf("NIE\n");
-                    free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                    freeAll(firstNumber, sign, secondNumber, tempString);
                     return false;
                 }
             }
@@ -64,22 +60,15 @@ bool bigNumbers(const char *inputString){
         case 1: // !=
             if( strlen(firstNumber) == strlen(secondNumber) ){
                 for(int i = 0; i < strlen(firstNumber); ++i){
-                    printf("AAAA %s %s %s\n", *(firstNumber + 1), *(sign), *(secondNumber));
                     if( (int)*(firstNumber + i) != (int)*(secondNumber + i) ){
                         printf("TAK\n");
-                        free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                        freeAll(firstNumber, sign, secondNumber, tempString);
                         return true;
                     }
                 }   
             }
             printf("NIE\n");
-            free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+            freeAll(firstNumber, sign, secondNumber, tempString);
             return false;
             break;
 
@@ -88,30 +77,21 @@ bool bigNumbers(const char *inputString){
                 for(int i = 0; i < strlen(firstNumber); ++i){
                     if( (int)*(firstNumber + i) > (int)*(secondNumber + i) ){
                         printf("TAK\n");
-                        free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                        freeAll(firstNumber, sign, secondNumber, tempString);
                         return true;
                     }
                 }
                 printf("NIE\n");
-                free(tempString);
+                freeAll(firstNumber, sign, secondNumber, tempString);
                 return false;
             } else{
                 if( strlen(firstNumber) > strlen(secondNumber) ){
                     printf("TAK\n");
-                    free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                    freeAll(firstNumber, sign, secondNumber, tempString);
                     return true;
                 } else{
                     printf("NIE\n");
-                    free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                    freeAll(firstNumber, sign, secondNumber, tempString);
                     return false;
                 }
             }
@@ -120,35 +100,23 @@ bool bigNumbers(const char *inputString){
         case 3: // < 
             if( strlen(firstNumber) == strlen(secondNumber) ){
                 for(int i = 0; i < strlen(firstNumber); ++i){
-                    if( (int)*(firstNumber + i) < (int)*(secondNumber + i) ){
+                    if( *(firstNumber + i) < *(secondNumber + i) ){
                         printf("TAK\n");
-                        free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                        freeAll(firstNumber, sign, secondNumber, tempString);
                         return true;
                     }
                 }
                 printf("NIE\n");
-                free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                freeAll(firstNumber, sign, secondNumber, tempString);
                 return false;
             } else{
                 if( strlen(firstNumber) < strlen(secondNumber) ){
                     printf("TAK\n");
-                    free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                    freeAll(firstNumber, sign, secondNumber, tempString);
                     return true;
                 } else{
                     printf("NIE\n");
-                    free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                    freeAll(firstNumber, sign, secondNumber, tempString);
                     return false;
                 }
             }
@@ -158,18 +126,12 @@ bool bigNumbers(const char *inputString){
             for(int i = 0; i < strlen(firstNumber); ++i){
                 if( !((int)*(firstNumber + i) >= (int)*(secondNumber + i)) ){
                     printf("NIE\n");
-                    free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                    freeAll(firstNumber, sign, secondNumber, tempString);
                     return false;
                 }
             }
             printf("TAK\n");
-            free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+            freeAll(firstNumber, sign, secondNumber, tempString);
             return true;
             break;
 
@@ -177,28 +139,19 @@ bool bigNumbers(const char *inputString){
             for(int i = 0; i < strlen(firstNumber); ++i){
                 if( !( (int)*(firstNumber + i) <= (int)*(secondNumber + i) ) ){
                     printf("NIE\n");
-                    free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+                    freeAll(firstNumber, sign, secondNumber, tempString);
                     return false;
                 }
             }
             break;
          default:
-            printf("WRONG SIGN\n");
-            free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
-    return false;
+            printf("ZLY ZNAK\n");
+            freeAll(firstNumber, sign, secondNumber, tempString);
+            return false;
             break;
     }
     printf("TAK\n");
-    free(tempString);
-    free(firstNumber);
-    free(sign);
-    free(secondNumber);
+    freeAll(firstNumber, sign, secondNumber, tempString);
     return true;
 }
 
@@ -208,38 +161,41 @@ void test_cases(){
     answer = bigNumbers("10 == 10");
     assert(answer == true);
 
-    // answer = bigNumbers("10 != 10");
-    // assert(answer == false);
+    answer = bigNumbers("12 == 10");
+    assert(answer == false);
 
-    // answer = bigNumbers("11 != 10");
-    // assert(answer == true);
+    answer = bigNumbers("10 != 10");
+    assert(answer == false);
 
-    // answer = bigNumbers("100 > 10");
-    // assert(answer == true);
+    answer = bigNumbers("11 != 10");
+    assert(answer == true);
 
-    // answer = bigNumbers("10 > 10");
-    // assert(answer == false); 
+    answer = bigNumbers("100 > 10");
+    assert(answer == true);
 
-    // answer = bigNumbers("110 > 100");
-    // assert(answer == true);    
+    answer = bigNumbers("10 > 10");
+    assert(answer == false); 
 
-    // answer = bigNumbers("10 < 10");
-    // assert(answer == false);  
+    answer = bigNumbers("110 > 100");
+    assert(answer == true);    
 
-    // answer = bigNumbers("10 < 11");
-    // assert(answer == true); 
+    answer = bigNumbers("10 < 10");
+    assert(answer == false);  
 
-    // answer = bigNumbers("100 < 11");
-    // assert(answer == false);   
+    answer = bigNumbers("10 < 11");
+    assert(answer == true); 
+
+    answer = bigNumbers("100 < 11");
+    assert(answer == false);   
     
-    // answer = bigNumbers("10 <= 11");
-    // assert(answer == true);
+    answer = bigNumbers("10 <= 11");
+    assert(answer == true);
 
-    // answer = bigNumbers("111 >= 10");
-    // assert(answer == true); 
+    answer = bigNumbers("111 >= 10");
+    assert(answer == true); 
     
-    // answer = bigNumbers("100000000000000000000000000000000000 < 100000000000000000000000000000000001");
-    // assert(answer == true);
+    answer = bigNumbers("100000000000000000000000000000000000 < 100000000000000000000000000000000001");
+    assert(answer == true);
 }
 
 int main(int argc, char *argv[])
