@@ -18,7 +18,7 @@ bool bigNumbers(const char *inputString){
     char *secondNumber = NULL;
     char *token = NULL;
     char *tempString = (char*)malloc( (strlen(inputString) + 1) * sizeof(char));
-    strncpy(tempString, inputString, strlen(inputString)); // strncpy
+    strncpy(tempString, inputString, strlen(inputString)); 
 
     token = strtok(tempString, " ");
     firstNumber = (char*)malloc( (strlen(token) + 1) * sizeof(char));
@@ -36,6 +36,7 @@ bool bigNumbers(const char *inputString){
     for(int i = 0; i < 6; ++i){
         if(!strcmp(signs[i], sign)){
             choice = i;
+            freeAll(firstNumber, sign, secondNumber, tempString);
             break;
         }
     }
@@ -152,6 +153,7 @@ bool bigNumbers(const char *inputString){
             break;
     }
     printf("TAK\n");
+    freeAll(firstNumber, sign, secondNumber, tempString);
     return true;
 }
 
