@@ -1,0 +1,153 @@
+==3360== Memcheck, a memory error detector
+==3360== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3360== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==3360== Command: ./C_Highest_scoring_word
+==3360== Parent PID: 2401
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x4840CA2: strcspn (vg_replace_strmem.c:1735)
+==3360==    by 0x48F36C8: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x4013F3: test_cases (C_Highest_scoring_word.c:63)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a3104a is 0 bytes after a block of size 10 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x4013F3: test_cases (C_Highest_scoring_word.c:63)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x48F36CC: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x4013F3: test_cases (C_Highest_scoring_word.c:63)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a3104a is 0 bytes after a block of size 10 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x4013F3: test_cases (C_Highest_scoring_word.c:63)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x483BC34: strlen (vg_replace_strmem.c:460)
+==3360==    by 0x4011C4: word_eval (C_Highest_scoring_word.c:10)
+==3360==    by 0x4012C0: highest_scoring_word (C_Highest_scoring_word.c:33)
+==3360==    by 0x4013F3: test_cases (C_Highest_scoring_word.c:63)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a3104a is 0 bytes after a block of size 10 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x4013F3: test_cases (C_Highest_scoring_word.c:63)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x48F36A6: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x4013F3: test_cases (C_Highest_scoring_word.c:63)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a3104a is 0 bytes after a block of size 10 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x4013F3: test_cases (C_Highest_scoring_word.c:63)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x4840CA2: strcspn (vg_replace_strmem.c:1735)
+==3360==    by 0x48F36C8: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x40143B: test_cases (C_Highest_scoring_word.c:67)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a3113a is 0 bytes after a block of size 10 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x40143B: test_cases (C_Highest_scoring_word.c:67)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x48F36CC: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x40143B: test_cases (C_Highest_scoring_word.c:67)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a3113a is 0 bytes after a block of size 10 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x40143B: test_cases (C_Highest_scoring_word.c:67)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x483BC34: strlen (vg_replace_strmem.c:460)
+==3360==    by 0x4011C4: word_eval (C_Highest_scoring_word.c:10)
+==3360==    by 0x4012C0: highest_scoring_word (C_Highest_scoring_word.c:33)
+==3360==    by 0x40143B: test_cases (C_Highest_scoring_word.c:67)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a3113a is 0 bytes after a block of size 10 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x40143B: test_cases (C_Highest_scoring_word.c:67)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x48F36A6: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x40143B: test_cases (C_Highest_scoring_word.c:67)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a3113a is 0 bytes after a block of size 10 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x40143B: test_cases (C_Highest_scoring_word.c:67)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x4840CA2: strcspn (vg_replace_strmem.c:1735)
+==3360==    by 0x48F36C8: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x401483: test_cases (C_Highest_scoring_word.c:71)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a31275 is 0 bytes after a block of size 5 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x401483: test_cases (C_Highest_scoring_word.c:71)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x48F36CC: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x401483: test_cases (C_Highest_scoring_word.c:71)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a31275 is 0 bytes after a block of size 5 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x401483: test_cases (C_Highest_scoring_word.c:71)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x483BC34: strlen (vg_replace_strmem.c:460)
+==3360==    by 0x4011C4: word_eval (C_Highest_scoring_word.c:10)
+==3360==    by 0x4012C0: highest_scoring_word (C_Highest_scoring_word.c:33)
+==3360==    by 0x401483: test_cases (C_Highest_scoring_word.c:71)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a31275 is 0 bytes after a block of size 5 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x401483: test_cases (C_Highest_scoring_word.c:71)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== Invalid read of size 1
+==3360==    at 0x48F36A6: strtok_r (in /usr/lib64/libc-2.28.so)
+==3360==    by 0x401308: highest_scoring_word (C_Highest_scoring_word.c:39)
+==3360==    by 0x401483: test_cases (C_Highest_scoring_word.c:71)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360==  Address 0x4a31275 is 0 bytes after a block of size 5 alloc'd
+==3360==    at 0x483880B: malloc (vg_replace_malloc.c:299)
+==3360==    by 0x40123D: highest_scoring_word (C_Highest_scoring_word.c:24)
+==3360==    by 0x401483: test_cases (C_Highest_scoring_word.c:71)
+==3360==    by 0x4014D2: main (C_Highest_scoring_word.c:77)
+==3360== 
+==3360== 
+==3360== HEAP SUMMARY:
+==3360==     in use at exit: 0 bytes in 0 blocks
+==3360==   total heap usage: 10 allocs, 10 frees, 65 bytes allocated
+==3360== 
+==3360== All heap blocks were freed -- no leaks are possible
+==3360== 
+==3360== For counts of detected and suppressed errors, rerun with: -v
+==3360== ERROR SUMMARY: 12 errors from 12 contexts (suppressed: 0 from 0)
