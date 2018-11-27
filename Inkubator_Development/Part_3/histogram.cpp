@@ -18,7 +18,7 @@ void trimWhitespace(std::string &stringToTrim){
         stringToTrim.erase(pos, lengthOfTrim);
 }
 
-std::string diceHistogram(std::vector<int> inputValues){
+std::string diceHistogram(const std::vector<int>& inputValues){
     std::string finalString; 
 
     if(!std::accumulate(inputValues.begin(), inputValues.end(), 0)){
