@@ -5,19 +5,45 @@
 #include <assert.h>
 #include <stdbool.h>
 
-void test_cases();
-char* highest_scoring_word(const char* string);
-int word_eval(const char* string);
+int word_eval(const char* string){
+    int score=0;
+    int stringLength = strlen(string);
+    for(int i = 0; i < stringLength; ++i){
+        score += (int)string[i] - 96;
+    }
+    return score;
+}
 
+char* highest_scoring_word(const char* string){
+    if( !strlen(string) )
+        return "";
+        
+    int highestScore = 0, tempScore = 0;
+    char* token = NULL;
+    char* highestWord = NULL;
+    char* tempString = (char*)malloc( (strlen(string) + 1) * sizeof(char));
+    strncpy(tempString, string, strlen(string));
 
-int main(){
-    test_cases();
-    return 0;
+    token = strtok(tempString," ");
+    highestWord = (char*)malloc( (strlen(token) + 1) * sizeof(char));
+    strcpy(highestWord, token);
+
+    while(token != NULL){
+        tempScore = word_eval(token);
+        if(tempScore > highestScore){
+            highestWord = realloc(highestWord, sizeof(token));
+            strncpy(highestWord, token, strlen(token) * sizeof(char));
+            highestScore = tempScore;
+        }
+        token = strtok(NULL," ");
+    }
+    free(tempString);
+    return highestWord;
 }
 
 void test_cases(){
 
-    char* answerString;
+    char* answerString = NULL;
     int answerInt;
     
     answerInt = word_eval("aaa");
@@ -45,41 +71,11 @@ void test_cases(){
     free(answerString);
 }
 
-char* highest_scoring_word(const char* string){
-    if( !strlen(string) )
-        return "";
-        
-    int highestScore = 0, tempScore = 0;
-    char* token;
-    char* highestWord;
-    char* tempString = (char*)malloc(strlen(string) * sizeof(char));
-    strcpy(tempString, string);
-
-    token = strtok(tempString," ,."); 
-    highestWord = (char*)malloc(strlen(token) * sizeof(char));
-    strncpy(highestWord, token, strlen(token) * sizeof(char));
-
-    while(token != NULL){
-        tempScore = word_eval(token);
-        if(tempScore > highestScore){
-            highestWord = realloc(highestWord, sizeof(token));
-            strncpy(highestWord, token, strlen(token) * sizeof(char));
-            highestScore = tempScore;
-        }
-        token = strtok(NULL," ,.");
-    }
-    free(token);
-    free(tempString);
-    return highestWord;
+int main(){
+    test_cases();
+    return 0;
 }
 
-int word_eval(const char* string){
-    int score=0;
 
-    for(int i = 0; i < strlen(string); ++i){
-        // In ASCII table "a" has index 97, so to get values a=1, b=2, ..., I need to subtract 96.
-        score += (int)string[i] - 96;
-    }
-    return score;
-}
+
 
