@@ -46,11 +46,6 @@ void test_cases(){
     answerCompare = {"WEST"};
     assert(answerString == answerCompare);	
 
-    // inputDirections = { \"North\", \"South\", \"South\", \"East\", \"West\", \"North\", \"West\" }";
-    // answerString = directions(inputDirections);
-    // answerCompare = {"WEST"};
-    // assert(answerString == answerCompare);		
-
     inputDirections = { {"North"}, {"South"}, {"South"},  {"North"} };
     answerString = directions(inputDirections);
     answerCompare = {};
