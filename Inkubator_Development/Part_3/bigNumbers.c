@@ -12,7 +12,7 @@ void freeAll(char* firstNumber, char* sign, char* secondNumber, char* tempString
 }
 
 bool bigNumbers(const char *inputString){
-    int choice=-1;
+    int choice = -1;
     char *firstNumber = NULL; 
     char *sign = NULL;
     char *secondNumber = NULL;
@@ -23,15 +23,15 @@ bool bigNumbers(const char *inputString){
 
     token = strtok(tempString, " ");
     firstNumber = (char*)malloc( (strlen(token) + 1 ) * sizeof(char) );
-    strncpy(firstNumber, token, strlen(token)  );
+    strncpy(firstNumber, token, strlen(token));
 
     token = strtok(NULL, " ");
     sign = (char*)malloc( (strlen(token) + 1 ) * sizeof(char) );
-    strncpy(sign, token, strlen(token)  );
+    strncpy(sign, token, strlen(token));
 
     token = strtok(NULL, " ");
     secondNumber = (char*)malloc( (strlen(token) + 1 ) * sizeof(char) );
-    strncpy(secondNumber, token, strlen(token)  ); 
+    strncpy(secondNumber, token, strlen(token)); 
 
     const char *signs[6] = { "==", "!=", ">", "<", ">=", "<=" };
     for(int i = 0; i < 6; ++i){
