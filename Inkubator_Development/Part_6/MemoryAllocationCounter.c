@@ -52,13 +52,14 @@ void mem_free(void *toDelete){
 	while(tempNode){
 		if(tempNode->next->address == toDelete){	
 			free(tempNode->next->pointer);
-			free(tempNode->next);
+			void *tempAddress = tempNode->next;
 			if(tempNode->next->next != NULL){ 
 				tempNode->next = tempNode->next->next;
 			} else {
 				tempNode->next = NULL;
 				lastNode = tempNode;
-			}			
+			}	
+			free(tempAddress);		
 			return;
 		}
 		tempNode = tempNode->next;
