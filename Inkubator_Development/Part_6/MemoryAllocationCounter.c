@@ -81,20 +81,20 @@ void test_cases(){
 	void *first = mem_alloc(sizeof(char));
 	void *second = mem_alloc(sizeof(char) * 2);
 	void *third = mem_alloc(sizeof(char) * 3);
-	printf("Allocated memory: %ld\n", get_currently_allocated_size());
+	assert(6 == get_currently_allocated_size());
 	
 	mem_free(first);
-	printf("Allocated memory: %ld\n", get_currently_allocated_size());
+	assert(5 == get_currently_allocated_size());
 
 	void *forth = mem_alloc(sizeof(char) * 4); 
-	printf("Allocated memory: %ld\n", get_currently_allocated_size());
+	assert(9 == get_currently_allocated_size());
 
 	mem_free(third);
-	printf("Allocated memory: %ld\n", get_currently_allocated_size());
+	assert(6 == get_currently_allocated_size());
 
 	mem_free(second);
 	mem_free(forth);
-	printf("Allocated memory: %ld\n", get_currently_allocated_size());
+	assert(0 == get_currently_allocated_size());
 
 }
 
